@@ -13,15 +13,15 @@ import java.util.ArrayList;
 @Table(name = "product")
 public class Product {
 
-
-    Discount discount;
-    String name;
     /** Id Объявления
      * @param id  */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     Integer id;
+    Integer author;
+    String name;
+
 
     /** Описание Объявления
      * @param description  */
@@ -37,7 +37,7 @@ public class Product {
     Integer price;
 
     Integer quantity;
-    ArrayList<Discount> discounts;
+    Discount discounts;
     ArrayList<String> reviews;
     ArrayList<String> keyword;
     ArrayList<Integer> specificstions;

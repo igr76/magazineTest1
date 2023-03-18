@@ -1,4 +1,4 @@
-package com.example.springSecurity.sequrity;
+package com.example.springSecurity.sequrity.exeption;
 /**
  * эксепш - класс
  * {@link

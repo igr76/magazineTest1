@@ -19,12 +19,14 @@ import java.util.ArrayList;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductDTO {
-    Discount discount;
-    String name;
+
+
     /** Id Объявления
      * @param id  */
 
     Integer id;
+    String name;
+    Integer author;
 
     /** Описание Объявления
      * @param description  */
@@ -40,7 +42,7 @@ public class ProductDTO {
     Integer price;
 
     Integer quantity;
-    ArrayList<Discount> discounts;
+    Discount discount;
     ArrayList<String> reviews;
     ArrayList<String> keyword;
     ArrayList<Integer> specificstions;

@@ -1,7 +1,7 @@
 package com.example.springSecurity.sequrity.Service.Impl;
 
 import com.example.springSecurity.sequrity.DTO.ProductDTO;
-import com.example.springSecurity.sequrity.ElemNotFound;
+import com.example.springSecurity.sequrity.exeption.ElemNotFound;
 import com.example.springSecurity.sequrity.Entity.Product;
 import com.example.springSecurity.sequrity.Mapper.ProductMapper;
 import com.example.springSecurity.sequrity.Repositories.ProductRepository;
