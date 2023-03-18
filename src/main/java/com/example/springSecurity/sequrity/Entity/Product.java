@@ -3,8 +3,7 @@ package com.example.springSecurity.sequrity.Entity;
 import antlr.collections.List;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 @Getter
 @Setter
@@ -17,6 +16,12 @@ public class Product {
 
     Discount discount;
     String name;
+    /** Id Объявления
+     * @param id  */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    Integer id;
 
     /** Описание Объявления
      * @param description  */

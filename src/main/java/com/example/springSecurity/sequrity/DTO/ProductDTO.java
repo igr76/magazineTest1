@@ -6,6 +6,9 @@ import lombok.experimental.FieldDefaults;
 
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 
 @Getter
@@ -18,6 +21,10 @@ import java.util.ArrayList;
 public class ProductDTO {
     Discount discount;
     String name;
+    /** Id Объявления
+     * @param id  */
+
+    Integer id;
 
     /** Описание Объявления
      * @param description  */
