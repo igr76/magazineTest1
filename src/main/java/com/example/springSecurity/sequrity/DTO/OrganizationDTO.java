@@ -21,4 +21,7 @@ public class OrganizationDTO {
     String logotipe;
     /**   Товары организации     */
     ArrayList<String>  product;
+    /** Статус организации  */
+    boolean status;
+
 }

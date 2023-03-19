@@ -59,9 +59,9 @@ public class WebSecurityConfig {
                         authz
                                 .mvcMatchers(AUTH_WHITELIST).permitAll()
                                 .mvcMatchers(HttpMethod.GET, "/Product").permitAll()
-                                .mvcMatchers("/product/**", "/users/**","/productHistory/**","/notification/**")
-                                .authenticated()
                                 .mvcMatchers("/discount/**","/organization/**").hasRole("ADMIN")
+                                .mvcMatchers("/product/**", "/users/**","/productHistory/**","/notification/**").hasRole("USER")
+                                .mvcMatchers(HttpMethod.POST,"/organization/**").hasRole("USER")
                                 .and();
 
                     } catch (Exception e) {

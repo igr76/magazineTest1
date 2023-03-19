@@ -77,9 +77,9 @@ public class OrganizationController {
             )
     })
     @PostMapping(value = "/product")
-    public ResponseEntity<OrganizationDTO> addOrganization( @RequestBody @Valid OrganizationDTO organizationDTO) throws IOException {
+    public ResponseEntity<OrganizationDTO> addOrganization( @RequestBody @Valid OrganizationDTO organizationDTO,Authentication authentication) throws IOException {
         log.info(FormLogInfo.getInfo());
-        return ResponseEntity.ok(organizationService.addOrganization(organizationDTO));
+        return ResponseEntity.ok(organizationService.addOrganization(organizationDTO,authentication ));
     }
     @Operation(summary = " Изменить организацию  ")
     @ApiResponses({

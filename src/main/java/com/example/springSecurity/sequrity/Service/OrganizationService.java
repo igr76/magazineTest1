@@ -11,9 +11,10 @@ public interface OrganizationService {
     /**     Получить список организаций     */
     Collection<OrganizationDTO> getOrganization();
     /**  Добавляем организацию     */
-    OrganizationDTO addOrganization(OrganizationDTO organizationDTO)
+    OrganizationDTO addOrganization(OrganizationDTO organizationDTO, Authentication authentication)
             throws IOException;
     /**     Изменить организацию     */
     OrganizationDTO updateOrganization(int id, OrganizationDTO organizationDTO, Authentication authentication);
+
 
 }

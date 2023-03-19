@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -44,20 +45,28 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     public Collection<ProductDTO> getAllProduct(Categories categories) {
         log.info(FormLogInfo.getInfo());
         Collection<Product> product = productRepository.findProductByCategories(categories);
-        return (Collection<ProductDTO>) productMapper.toDTOList(product);
+        product.stream()
+                .map(e ->e.getOrganization())
+                .filter(e -> sequrityServise.checkLegalOrganization(e))
+                .collect(Collectors.toList());
+        return  productMapper.toDTOList(product);
     }
 
     @Override
     public ProductDTO getProductById(int id) {
         log.info(FormLogInfo.getInfo());
         Product product = productRepository.findById(id).orElseThrow(ElemNotFound::new);
+        if (!sequrityServise.checkLegalOrganization(product.getOrganization())) {
+            return null;
+        }
         return productMapper.toDTO(product);
     }
 
     @Override
     public ProductDTO updateProduct(int id, ProductDTO productDTO, Authentication authentication) {
         log.info(FormLogInfo.getInfo());
-        if (!sequrityServise.checkAuthorEmailAndAdsId(id, authentication) || sequrityServise.checkIsAdmin(authentication)) {
+        if (!sequrityServise.checkAuthorEmailAndAdsId(id, authentication) ||
+                !sequrityServise.checkUserOrganization(authentication)||sequrityServise.checkIsAdmin(authentication)) {
             throw new SecurityAccessException();
         }
         Product product1 = productMapper.toEntity(productDTO);
@@ -68,7 +77,7 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     public ProductDTO addProduct(ProductDTO productDTO, Authentication authentication) throws IOException {
         log.info(FormLogInfo.getInfo());
 
-        if (productDTO == null ) {
+        if (productDTO == null || !sequrityServise.checkUserOrganization(authentication)) {
             log.error(FormLogInfo.getException());
             throw new IllegalArgumentException();
         }
@@ -81,7 +90,8 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     @Override
     public void deleteProduct(int id, Authentication authentication) {
         log.info(FormLogInfo.getInfo());
-        if (sequrityServise.checkAuthorEmailAndAdsId(id, authentication) || sequrityServise.checkIsAdmin(authentication)) {
+        if (sequrityServise.checkAuthorEmailAndAdsId(id, authentication) ||
+                sequrityServise.checkIsAdmin(authentication) || sequrityServise.checkUserOrganization(authentication)) {
             Product product1 = productRepository.findById(id).orElseThrow(ElemNotFound::new);
             productRepository.deleteById(id);
         }else   throw new SecurityAccessException();

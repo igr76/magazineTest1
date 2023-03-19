@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "notification")
 public class Notification {
     /**Заголовок уведомления      */
+    @Column(name = "title")
     String title;
     /**Дата создания уведомления      */
     @Column(name = "created_at")

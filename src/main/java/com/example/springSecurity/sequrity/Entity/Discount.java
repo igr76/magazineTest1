@@ -19,6 +19,7 @@ public class Discount {
     /** Категория  скидки       */
             Categories categories;
     /** Размер скидки       */
+    @Column(name = "volume")
     Integer volume;
     /**Дата завершения скидки       */
     @Column(name = "created_ds")
