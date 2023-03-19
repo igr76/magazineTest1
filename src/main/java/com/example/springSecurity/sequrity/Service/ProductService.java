@@ -79,7 +79,10 @@ public interface ProductService {
     /** Возврат продукта    */
     void refundProduct(int id,Authentication authentication) ;
 
-
+    /** Оставить отзыв  и оценку */
+    ProductDTO toLeaveReviews(int id,Authentication authentication,String reviewsDTO,int estimationDTO );
+    /** Написать уведомление */
+    void writeNotification(NotificationDTO notificationDTO);
 
 
 

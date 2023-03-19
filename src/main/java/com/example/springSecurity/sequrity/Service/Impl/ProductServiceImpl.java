@@ -1,14 +1,13 @@
 package com.example.springSecurity.sequrity.Service.Impl;
 
-import com.example.springSecurity.sequrity.DTO.Categories;
-import com.example.springSecurity.sequrity.DTO.NotificationDTO;
-import com.example.springSecurity.sequrity.DTO.ProductDTO;
-import com.example.springSecurity.sequrity.DTO.ProductDTOHistory;
+import com.example.springSecurity.sequrity.DTO.*;
 import com.example.springSecurity.sequrity.Entity.Notification;
 import com.example.springSecurity.sequrity.Entity.ProductHistory;
 import com.example.springSecurity.sequrity.Mapper.NotificationMapper;
+import com.example.springSecurity.sequrity.Mapper.UserMapper;
 import com.example.springSecurity.sequrity.Repositories.NotificationRepository;
 import com.example.springSecurity.sequrity.Repositories.ProductHistoryRepository;
+import com.example.springSecurity.sequrity.Repositories.UserRepository;
 import com.example.springSecurity.sequrity.exeption.ElemNotFound;
 import com.example.springSecurity.sequrity.Entity.Product;
 import com.example.springSecurity.sequrity.Mapper.ProductMapper;
@@ -34,6 +33,10 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     NotificationMapper notificationMapper;
     ProductDTOHistory productDTOHistory;
     ProductHistory productHistory;
+    UserRepository userRepository;
+    UserMapper userMapper;
+    ProductDTO productDTO;
+
     ProductHistoryRepository productHistoryRepository;
     Product product;
 
@@ -98,7 +101,7 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
          }
 
     @Override
-    public void buyProduct(int id, ProductDTO productDTO,Authentication authentication) throws IOException {
+    public void buyProduct(int id, ProductDTO productDTO,Authentication authentication)  {
         log.info(FormLogInfo.getInfo());
         if (!sequrityServise.checkAuthorEmailAndAdsId(id, authentication)) {
             throw new SecurityAccessException();
@@ -108,7 +111,6 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
         if (balanse - product1.getPrice() >= 0) {
             ProductHistory productHistory1 = productMapper.toHistory(product1);
             productHistoryRepository.save(productHistory1);
-            productRepository.deleteById(id);
         }
 
     }
@@ -121,25 +123,41 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
                 || !sequrityServise.isAdmin(authentication)) {
             throw new SecurityAccessException();
         }
-        return productMapper.toDTOHistoryList(productHistoryRepository.findAllById(id));
+        return null; //productMapper.toDTOHistoryList(productHistoryRepository.findAllById(id));
     }
 
     @Override
     public void refundProduct(int id, Authentication authentication) {
         log.info(FormLogInfo.getInfo());
         if (!sequrityServise.checkAuthorEmailAndAdsId(id, authentication)
-                || !sequrityServise.isAdmin(authentication) {
+                || !sequrityServise.isAdmin(authentication)) {
             throw new SecurityAccessException();
         }
         ProductHistory productHistory1 = productHistoryRepository.findById(id).orElseThrow(ElemNotFound::new);
-        sequrityServise.getUserByEmail(authentication).getBalance() + productHistory1.getPrice();
-        Product product1 = productRepository.findById(id).orElseThrow(ElemNotFound::new);
-        Integer balanse = sequrityServise.getUserByEmail(authentication).getBalance();
-        if (balanse - product1.getPrice() >= 0) {
+        UserDTO userDTO = userMapper.toDTO(sequrityServise.getUserByEmail(authentication));
+        userDTO.setBalance(userDTO.getBalance() + productHistory1.getPrice());
+            userRepository.save(userMapper.toEntity(userDTO));
+            productHistoryRepository.deleteById(id);
 
-            productHistoryRepository.save(productHistory1);
-            productRepository.deleteById(id);
-        }
     }
+
+    @Override
+    public ProductDTO toLeaveReviews(int id,Authentication authentication,String reviewsDTO,int estimationDTO) {
+        log.info(FormLogInfo.getInfo());
+        if (!sequrityServise.checkAuthorEmailAndAdsId(id, authentication)) {
+            throw new SecurityAccessException();
+        }
+        Product product1= productRepository.findById(id).orElseThrow(ElemNotFound::new);
+        ProductDTO productDTO1=productMapper.toDTO(product1);
+//        productDTO.setReviews(productDTO1.getReviews().add(reviewsDTO));
+//        productDTO.setEstimation(productDTO1.getEstimation().add(estimationDTO));
+        return productDTO;
+    }
+
+    @Override
+    public void writeNotification(NotificationDTO notificationDTO) {
+        notificationRepository.save(notificationMapper.toEntity(notificationDTO));
+    }
+
 
 }
