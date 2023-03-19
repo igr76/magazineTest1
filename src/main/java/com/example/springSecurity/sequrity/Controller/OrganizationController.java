@@ -58,7 +58,7 @@ public class OrganizationController {
                     description = "OK",
                     content =
                     @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = OrganizationDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "401",
@@ -77,9 +77,9 @@ public class OrganizationController {
             )
     })
     @PostMapping(value = "/product")
-    public ResponseEntity<OrganizationDTO> addOrganization( @RequestBody @Valid OrganizationDTO organizationDTO) throws IOException {
+    public ResponseEntity<OrganizationDTO> addOrganization( @RequestBody @Valid OrganizationDTO organizationDTO,Authentication authentication) throws IOException {
         log.info(FormLogInfo.getInfo());
-        return ResponseEntity.ok(organizationService.addOrganization(organizationDTO));
+        return ResponseEntity.ok(organizationService.addOrganization(organizationDTO,authentication ));
     }
     @Operation(summary = " Изменить организацию  ")
     @ApiResponses({
@@ -87,7 +87,7 @@ public class OrganizationController {
                     responseCode = "200",
                     description = "OK",
                     content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = OrganizationDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "204",

@@ -14,16 +14,13 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class NotificationDTO {
-    /**Заголовок уведомления
-     * @param title  */
+    /**Заголовок уведомления */
     String title;
-    /**Дата создания уведомления
-     * @param createdAt  */
+    /**Дата создания уведомления      */
     @Column(name = "created_at")
     LocalDateTime createdN;
 
-    /**Текст уведомления
-     *  @param text  */
+    /**   Текст уведомления     */
     @Column(name = "text")
     String text;
 }

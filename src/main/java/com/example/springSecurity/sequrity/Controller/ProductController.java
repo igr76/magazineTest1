@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/product")
 @Tag(name = "Товары")
 @Slf4j
 @CrossOrigin(value = "http://localhost:3000")
@@ -63,7 +63,7 @@ public class ProductController {
                     responseCode = "200",
                     description = "OK",
                     content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "401",
@@ -97,7 +97,7 @@ public class ProductController {
                     responseCode = "200",
                     description = "OK",
                     content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "204",

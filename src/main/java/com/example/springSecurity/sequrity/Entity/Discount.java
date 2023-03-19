@@ -16,10 +16,12 @@ public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categories", nullable = false)
-    Categories categories;
+    /** Категория  скидки       */
+            Categories categories;
+    /** Размер скидки       */
+    @Column(name = "volume")
     Integer volume;
-    /**Дата завершения скидки
-     * @param createdAt  */
+    /**Дата завершения скидки       */
     @Column(name = "created_ds")
     LocalDateTime createdDs;
 
