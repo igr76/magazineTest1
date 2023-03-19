@@ -1,8 +1,10 @@
 package com.example.springSecurity.sequrity.Entity;
 
+import com.example.springSecurity.sequrity.DTO.Categories;
 import lombok.*;
 
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -11,8 +13,14 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @Table(name = "discount")
 public class Discount {
-    String product;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "categories", nullable = false)
+    Categories categories;
     Integer volume;
-    String time;
+    /**Дата завершения скидки
+     * @param createdAt  */
+    @Column(name = "created_ds")
+    LocalDateTime createdDs;
 
 }

@@ -1,28 +1,25 @@
-package com.example.springSecurity.sequrity.Entity;
+package com.example.springSecurity.sequrity.DTO;
 
-import antlr.collections.List;
-import com.example.springSecurity.sequrity.DTO.Categories;
+import com.example.springSecurity.sequrity.Entity.Discount;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import java.util.ArrayList;
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "product")
-public class Product {
-
+@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class ProductDTOHistory {
     /** Id Объявления
      * @param id  */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    Integer id;
-    Integer author;
-    String name;
 
+    Integer id;
+    String name;
+    Integer author;
 
     /** Описание Объявления
      * @param description  */
@@ -38,12 +35,10 @@ public class Product {
     Integer price;
 
     Integer quantity;
-    Discount discounts;
+    Discount discount;
     Categories categories;
     ArrayList<String> reviews;
     ArrayList<String> keyword;
     ArrayList<Integer> specificstions;
     ArrayList<Integer> estimation;
-
-
 }

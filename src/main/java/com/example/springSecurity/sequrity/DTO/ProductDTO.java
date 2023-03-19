@@ -6,6 +6,9 @@ import lombok.experimental.FieldDefaults;
 
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.ArrayList;
 
 @Getter
@@ -16,8 +19,14 @@ import java.util.ArrayList;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductDTO {
-    Discount discount;
+
+
+    /** Id Объявления
+     * @param id  */
+
+    Integer id;
     String name;
+    Integer author;
 
     /** Описание Объявления
      * @param description  */
@@ -33,7 +42,8 @@ public class ProductDTO {
     Integer price;
 
     Integer quantity;
-    ArrayList<Discount> discounts;
+    Discount discount;
+    Categories categories;
     ArrayList<String> reviews;
     ArrayList<String> keyword;
     ArrayList<Integer> specificstions;

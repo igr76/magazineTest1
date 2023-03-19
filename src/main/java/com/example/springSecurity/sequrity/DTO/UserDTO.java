@@ -4,6 +4,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Getter
 @Setter
@@ -37,4 +39,7 @@ public class UserDTO {
      */
     @Column(name = "password")
     Integer balance;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 }
