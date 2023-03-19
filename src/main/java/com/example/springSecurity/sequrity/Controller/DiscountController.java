@@ -56,7 +56,7 @@ public class DiscountController {
                     description = "OK",
                     content =
                     @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = DiscountDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "401",
@@ -85,7 +85,7 @@ public class DiscountController {
                     responseCode = "200",
                     description = "OK",
                     content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = DiscountDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "204",

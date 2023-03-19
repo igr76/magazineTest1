@@ -63,7 +63,7 @@ public class ProductController {
                     responseCode = "200",
                     description = "OK",
                     content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "401",
@@ -97,7 +97,7 @@ public class ProductController {
                     responseCode = "200",
                     description = "OK",
                     content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "204",

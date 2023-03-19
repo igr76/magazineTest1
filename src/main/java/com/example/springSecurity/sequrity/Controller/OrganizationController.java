@@ -58,7 +58,7 @@ public class OrganizationController {
                     description = "OK",
                     content =
                     @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = OrganizationDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "401",
@@ -87,7 +87,7 @@ public class OrganizationController {
                     responseCode = "200",
                     description = "OK",
                     content = @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = UserDTO.class)))
+                            array = @ArraySchema(schema = @Schema(implementation = OrganizationDTO.class)))
             ),
             @ApiResponse(
                     responseCode = "204",

@@ -12,9 +12,13 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Table(name = "organization")
 public class Organization {
+    /**   Наименование организации     */
     String name;
+    /**   Описание организации    */
     String title;
+    /**   Логотип организации     */
     String logotipe;
+    /**   Товары организации     */
     ArrayList<String>  product;
 
 }
