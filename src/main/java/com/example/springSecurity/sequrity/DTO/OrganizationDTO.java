@@ -13,8 +13,15 @@ import java.util.ArrayList;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrganizationDTO {
+    /**   Наименование организации     */
     String name;
+    /**   Описание организации    */
     String title;
+    /**   Логотип организации     */
     String logotipe;
-    ArrayList<String> product;
+    /**   Товары организации     */
+    ArrayList<String>  product;
+    /** Статус организации  */
+    boolean status;
+
 }

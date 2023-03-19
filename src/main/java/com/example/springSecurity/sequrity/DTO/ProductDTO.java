@@ -21,31 +21,42 @@ import java.util.ArrayList;
 public class ProductDTO {
 
 
-    /** Id Объявления
-     * @param id  */
-
+    /** Id Товара
+      * @param id  */
     Integer id;
+    /** Наименование товара
+     * @param name  */
     String name;
-    Integer author;
+    /** Продавец товара
+     * @param organization  */
+    String organization;
 
-    /** Описание Объявления
+    /** Описание товара
      * @param description  */
-    @Column(name = "description")
+
     String description;
     /** Стоимость Объявления
      * @param price  */
-    @Column(name = "organization")
-    String organization;
-    /** Стоимость Объявления
-     * @param price  */
-    @Column(name = "price")
     Integer price;
-
+    /** Количество товара
+     * @param quantity  */
     Integer quantity;
+    /** Скидка на товар
+     * @param discount  */
     Discount discount;
+    /** Категория товара
+     * @param categories  */
     Categories categories;
+    /** Отзывы на товар
+     * @param reviews  */
     ArrayList<String> reviews;
+    /** Ключевые слова
+     * @param keyword  */
     ArrayList<String> keyword;
+    /** Характеристика товара
+     * @param specificstions  */
     ArrayList<Integer> specificstions;
+    /** Оценки товара
+     * @param estimation  */
     ArrayList<Integer> estimation;
 }

@@ -15,13 +15,18 @@ import java.util.Collection;
 public class OrganizationServiceImpl implements OrganizationService {
     OrganizationMapper organizationMapper;
     OrganizationRepository organizationRepository;
+    SequrityServise sequrityServise;
     @Override
     public Collection<OrganizationDTO> getOrganization() {
         return organizationMapper.toDTOList(organizationRepository.findAll());
     }
 
     @Override
-    public OrganizationDTO addOrganization(OrganizationDTO organizationDTO) throws IOException {
+    public OrganizationDTO addOrganization(OrganizationDTO organizationDTO, Authentication authentication) throws IOException {
+        Organization organization1 = organizationRepository.findByName(organizationDTO.getName());
+        if (organization1.getName() == organizationDTO.getName() || organizationDTO.isStatus()
+                || !sequrityServise.isAdmin(authentication)) { throw new RuntimeException("Недоступное действие");
+        }
         Organization organization = organizationRepository.save(organizationMapper.toEntity(organizationDTO));
         return organizationMapper.toDTO(organization);
     }
@@ -34,4 +39,6 @@ public class OrganizationServiceImpl implements OrganizationService {
         organizationRepository.save(organization);
         return organizationMapper.toDTO(organization);
     }
+
+
 }

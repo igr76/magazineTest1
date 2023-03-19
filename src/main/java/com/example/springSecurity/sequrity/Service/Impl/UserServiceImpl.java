@@ -30,7 +30,9 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
     private final UserMapper userMapper;
+    SequrityServise sequrityServise;
 
     @Value("${image.user.dir.path}")
     private String userPhotoDir;
@@ -39,6 +41,7 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
     }
+
 
     /**
      * Получить данные пользователя
@@ -57,17 +60,26 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO updateUser(UserDTO newUserDto, Authentication authentication) {
         log.info(FormLogInfo.getInfo());
-
         String nameEmail = authentication.getName();
         Users user = findEntityByEmail(nameEmail);
+        if (!sequrityServise.checkIsAdmin(authentication)) {
+            if (newUserDto.getBalance() == user.getBalance() || newUserDto.getRole() == user.getRole()
+                    || newUserDto.getOrganization() == user.getOrganization()) {
+                throw new RuntimeException();
+            }
+        }
+
+
         int id = user.getId();
 
         Users oldUser = findById(id);
 
         oldUser.setEmail(user.getEmail());
-        oldUser.setProduct(user.getProduct());
+        oldUser.setPassword(user.getPassword());
         oldUser.setUserName(newUserDto.getUserName());
         oldUser.setBalance(newUserDto.getBalance());
+        oldUser.setRole(newUserDto.getRole());
+        oldUser.setOrganization(newUserDto.getOrganization());
 
 
            oldUser.setImage(user.getImage());

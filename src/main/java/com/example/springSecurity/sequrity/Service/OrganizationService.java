@@ -8,24 +8,13 @@ import java.io.IOException;
 import java.util.Collection;
 
 public interface OrganizationService {
-    /**
-     * Возвращает комментарий
-     *
-     */
+    /**     Получить список организаций     */
     Collection<OrganizationDTO> getOrganization();
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
-    OrganizationDTO addOrganization(OrganizationDTO organizationDTO)
+    /**  Добавляем организацию     */
+    OrganizationDTO addOrganization(OrganizationDTO organizationDTO, Authentication authentication)
             throws IOException;
-    /**
-     * Обновляет объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - обнволенный комментарий
-     */
+    /**     Изменить организацию     */
     OrganizationDTO updateOrganization(int id, OrganizationDTO organizationDTO, Authentication authentication);
+
 
 }

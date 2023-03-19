@@ -16,6 +16,10 @@ import javax.persistence.Enumerated;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserDTO {
     /**
+     * id пользователя
+     */
+    Integer id;
+    /**
      * Имя пользователя
      */
     @Column(name = "user_name")
@@ -39,7 +43,15 @@ public class UserDTO {
      */
     @Column(name = "password")
     Integer balance;
+    /**
+     * фото пользователя
+     */
+    String image;
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
+    /** Продавец товара
+     * @param organization  */
+    @Column(name = "organization")
+    String organization;
 }

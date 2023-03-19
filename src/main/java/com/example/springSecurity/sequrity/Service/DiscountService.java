@@ -8,24 +8,12 @@ import java.io.IOException;
 import java.util.Collection;
 
 public interface DiscountService {
-    /**
-     * Возвращает комментарий
-     *
-     */
+    /**     Получить список скидок     */
     Collection<DiscountDTO> getDiscoun();
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
+    /** Добавить скидку     */
     DiscountDTO addDiscoun(DiscountDTO discountDTO)
             throws IOException;
-    /**
-     * Обновляет объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - обнволенный комментарий
-     */
+    /**     Изменить скидку     */
     DiscountDTO updateDiscoun(int id, DiscountDTO discountDTO);
 
 

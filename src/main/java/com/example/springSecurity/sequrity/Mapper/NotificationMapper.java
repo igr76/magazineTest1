@@ -7,6 +7,9 @@ import org.mapstruct.Mapper;
 import java.util.Collection;
 import java.util.Optional;
 
+/**
+ * маппер для {@link Notification} готовый DTO {@link NotificationDTO}
+ */
 @Mapper
 public interface NotificationMapper {
     Notification toEntity(NotificationDTO notificationDTO);

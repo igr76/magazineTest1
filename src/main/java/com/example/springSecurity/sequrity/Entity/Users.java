@@ -1,8 +1,10 @@
 package com.example.springSecurity.sequrity.Entity;
 
 import com.example.springSecurity.sequrity.DTO.Role;
+import com.example.springSecurity.sequrity.Service.Impl.SequrityServise;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.aspectj.weaver.ast.Not;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "user")
 public class Users {
+    SequrityServise sequrityServise;
     /**
      * id пользователя
      */
@@ -53,12 +56,11 @@ public class Users {
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
-    /**
-     * Список объявлений пользователя
-     */
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
-    @JsonBackReference
-    @ToString.Exclude
-    List<Product> product;
+    /** Продавец товара
+     * @param organization  */
+    @Column(name = "organization")
+    String organization;
+
+
 
 }
