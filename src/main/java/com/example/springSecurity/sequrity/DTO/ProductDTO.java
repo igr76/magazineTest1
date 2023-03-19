@@ -43,6 +43,7 @@ public class ProductDTO {
 
     Integer quantity;
     Discount discount;
+    Categories categories;
     ArrayList<String> reviews;
     ArrayList<String> keyword;
     ArrayList<Integer> specificstions;

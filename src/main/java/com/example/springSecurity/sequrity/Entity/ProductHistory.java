@@ -1,6 +1,5 @@
 package com.example.springSecurity.sequrity.Entity;
 
-import antlr.collections.List;
 import com.example.springSecurity.sequrity.DTO.Categories;
 import lombok.*;
 
@@ -11,8 +10,8 @@ import java.util.ArrayList;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "product")
-public class Product {
+@Table(name = "productHistory")
+public class ProductHistory {
 
     /** Id Объявления
      * @param id  */
@@ -44,6 +43,7 @@ public class Product {
     ArrayList<String> keyword;
     ArrayList<Integer> specificstions;
     ArrayList<Integer> estimation;
+
 
 
 }

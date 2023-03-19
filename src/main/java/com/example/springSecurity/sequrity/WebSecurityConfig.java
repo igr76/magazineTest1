@@ -60,7 +60,10 @@ public class WebSecurityConfig {
                                 .mvcMatchers(AUTH_WHITELIST).permitAll()
                                 .mvcMatchers(HttpMethod.GET, "/Product").permitAll()
                                 .mvcMatchers("/product/**", "/users/**")
-                                .authenticated();
+                                .authenticated()
+                                .mvcMatchers("/discount/**","/organization/**").hasRole("ADMIN")
+                                .and();
+
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
