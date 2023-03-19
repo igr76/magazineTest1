@@ -59,7 +59,7 @@ public class WebSecurityConfig {
                         authz
                                 .mvcMatchers(AUTH_WHITELIST).permitAll()
                                 .mvcMatchers(HttpMethod.GET, "/Product").permitAll()
-                                .mvcMatchers("/product/**", "/users/**")
+                                .mvcMatchers("/product/**", "/users/**","/productHistory/**","/notification/**")
                                 .authenticated()
                                 .mvcMatchers("/discount/**","/organization/**").hasRole("ADMIN")
                                 .and();

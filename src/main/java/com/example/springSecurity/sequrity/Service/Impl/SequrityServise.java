@@ -20,7 +20,7 @@ public class SequrityServise {
         if (checkIsFreeze(authentication)) {
             return false;
         }
-        return user.getId() == adEntity.getAuthor();
+        return user.getOrganization() == adEntity.getOrganization();
     }
     /** Проверка пользователя на электронную почту */
     public boolean isAuthorAuthenticated(String email, Authentication authentication) {

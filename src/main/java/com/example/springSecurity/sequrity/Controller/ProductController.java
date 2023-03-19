@@ -26,7 +26,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/product")
 @Tag(name = "Товары")
 @Slf4j
 @CrossOrigin(value = "http://localhost:3000")
