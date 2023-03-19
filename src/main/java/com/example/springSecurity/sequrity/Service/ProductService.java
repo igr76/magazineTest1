@@ -11,69 +11,29 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.Collection;
 
-/**
- * Сервис объявлений
- */
+/** * Сервис товаров */
 public interface ProductService {
 
-    /**
-     * Возвращает объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - комментарий
-     */
+    /**     Получить список товаров     */
     Collection<ProductDTO> getAllProduct(Categories categories);
-    /**
-     * Возвращает объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - комментарий
-     */
+    /**   Показать товар     */
     ProductDTO getProductById(int id);
 
-    /**
-     * Обновляет объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - обнволенный комментарий
-     */
+    /**     * Обновляет товар     */
     ProductDTO updateProduct(int id, ProductDTO productDTO, Authentication authentication);
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
+    /**     * Добавляем товар     */
     ProductDTO addProduct(ProductDTO productDTO,  Authentication authentication)  throws IOException;
 
-    /**
-     * Удаляет комментарий
-     */
+    /**     * Удаляет товар     */
     void deleteProduct(int id, Authentication authentication);
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
+    /**     Получить уведомление     */
     Collection<NotificationDTO> getNotification(int id,NotificationDTO notificationDTO);
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
+    /**     * Добавляем уведомление     */
     void addNotification(int id,NotificationDTO notificationDTO)  throws IOException;
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
+    /**    Купить товар     */
     void buyProduct(int id,ProductDTO productDTO,Authentication authentication)  ;
 
-    /**
-     * Возвращает объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - комментарий
-     */
+    /**   Получить историю товара     */
     Collection<ProductDTOHistory> getProductDTOHistoryById(int id,Authentication authentication);
 
     /** Возврат продукта    */
