@@ -3,12 +3,12 @@ package com.example.springSecurity.sequrity.Entity;
 import com.example.springSecurity.sequrity.DTO.Role;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
+import org.aspectj.weaver.ast.Not;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Getter
-@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -61,4 +61,27 @@ public class Users {
     @ToString.Exclude
     List<Product> product;
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setProduct(List<Product> product) {
+        this.product = product;
+    }
 }
