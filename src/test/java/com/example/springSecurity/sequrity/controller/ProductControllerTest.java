@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.Optional;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -57,7 +59,11 @@ public class ProductControllerTest {
 ////        properties = null;
 ////    }
 //    @Test
-//    void getAllProduct() throws Exception {
+//    void getProductById() throws Exception {
+//
+//    when(productRepository.findById(anyInt())).thenReturn(Optional.of(product1));
+//    assertThat(productService.getProductById(1)).isEqualTo(productDTO1);
+//    verify(productRepository, times(1)).findAllById(any());
 //
 //        mockMvc.perform(MockMvcRequestBuilders.patch(
 //                                url)

@@ -9,10 +9,13 @@ import com.example.springSecurity.sequrity.exeption.ElemNotFound;
 import com.example.springSecurity.sequrity.loger.FormLogInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Timer;
+import java.util.TimerTask;
+
 /** * Сервис скидок */
 @Service
 @Slf4j
@@ -45,5 +48,21 @@ public class DiscountServiceImpl implements DiscountService {
         Discount discount = discountRepository.findById(id).orElseThrow(ElemNotFound::new);
         discountRepository.save(discount);
         return discountMapper.toDTO(discount);
+    }
+    /** Ежедневная проверка срока скидок */
+    public void givenUsingTimer_whenSchedulingDailyTask_thenCorrect() {
+        TimerTask repeatedTask = new TimerTask() {
+            public void run() {
+                Collection<Discount> discounts = discountRepository.findAll();
+                discounts.stream()
+                        .filter(e -> e.getCreatedDs().equals(LocalDateTime.now()))
+                        .forEach(e -> e.setVolume(null));;
+            }
+        };
+        Timer timer = new Timer("Timer");
+
+        long delay = 1000L;
+        long period = 1000L * 60L * 60L * 24L;
+        timer.scheduleAtFixedRate(repeatedTask, delay, period);
     }
 }
