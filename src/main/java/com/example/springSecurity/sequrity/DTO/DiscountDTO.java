@@ -21,7 +21,7 @@ public class DiscountDTO {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categories", nullable = false)
     /** Категория  скидки       */
-    Categories categories;
+    Role categories;
     /** Размер скидки       */
     Integer volume;
     /**Дата завершения скидки       */

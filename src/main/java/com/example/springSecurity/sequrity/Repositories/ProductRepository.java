@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 /**
- * репозиторий для объявления
+ * репозиторий для товаров
  */
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {

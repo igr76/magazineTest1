@@ -46,7 +46,7 @@ public class ProductDTO {
     Discount discount;
     /** Категория товара
      * @param categories  */
-    Categories categories;
+    Role categories;
     /** Отзывы на товар
      * @param reviews  */
     ArrayList<String> reviews;

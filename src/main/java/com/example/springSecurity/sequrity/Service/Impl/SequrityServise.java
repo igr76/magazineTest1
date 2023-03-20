@@ -10,7 +10,9 @@ import com.example.springSecurity.sequrity.Repositories.UserRepository;
 import com.example.springSecurity.sequrity.exeption.ElemNotFound;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SequrityServise {
     ProductRepository productRepository;
     UserRepository userRepository;

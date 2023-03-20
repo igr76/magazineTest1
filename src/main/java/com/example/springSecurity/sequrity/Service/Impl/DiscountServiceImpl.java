@@ -6,10 +6,17 @@ import com.example.springSecurity.sequrity.Mapper.DiscountMapper;
 import com.example.springSecurity.sequrity.Repositories.DiscountRepository;
 import com.example.springSecurity.sequrity.Service.DiscountService;
 import com.example.springSecurity.sequrity.exeption.ElemNotFound;
+import com.example.springSecurity.sequrity.loger.FormLogInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.Collection;
-
+/** * Сервис скидок */
+@Service
+@Slf4j
+@Transactional
 public class DiscountServiceImpl implements DiscountService {
     DiscountMapper discountMapper;
     DiscountRepository discountRepository;
@@ -18,32 +25,23 @@ public class DiscountServiceImpl implements DiscountService {
         this.discountMapper = discountMapper;
         this.discountRepository = discountRepository;
     }
-    /**
-     * Возвращает комментарий
-     *
-     */
+    /**     Получить список скидок     */
     @Override
     public Collection<DiscountDTO> getDiscoun() {
+        log.info(FormLogInfo.getInfo());
         return discountMapper.toDTOList(discountRepository.findAll());
     }
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
+    /** Добавить скидку     */
     @Override
     public DiscountDTO addDiscoun( DiscountDTO discountDTO) throws IOException {
+        log.info(FormLogInfo.getInfo());
         Discount discount = discountRepository.save(discountMapper.toEntity(discountDTO));
         return discountMapper.toDTO(discount);
     }
-    /**
-     * Обновляет объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - обнволенный комментарий
-     */
+    /**     Изменить скидку     */
     @Override
     public DiscountDTO updateDiscoun(int id, DiscountDTO discountDTO) {
+        log.info(FormLogInfo.getInfo());
         Discount discount = discountRepository.findById(id).orElseThrow(ElemNotFound::new);
         discountRepository.save(discount);
         return discountMapper.toDTO(discount);
