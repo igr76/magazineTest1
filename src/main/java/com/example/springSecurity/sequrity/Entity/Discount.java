@@ -1,6 +1,7 @@
 package com.example.springSecurity.sequrity.Entity;
 
 import com.example.springSecurity.sequrity.DTO.Categories;
+import com.example.springSecurity.sequrity.DTO.Role;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,7 +18,7 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categories", nullable = false)
     /** Категория  скидки       */
-            Categories categories;
+            Role categories;
     /** Размер скидки       */
     @Column(name = "volume")
     Integer volume;

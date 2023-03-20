@@ -18,30 +18,18 @@ public class DiscountServiceImpl implements DiscountService {
         this.discountMapper = discountMapper;
         this.discountRepository = discountRepository;
     }
-    /**
-     * Возвращает комментарий
-     *
-     */
+    /**     Получить список скидок     */
     @Override
     public Collection<DiscountDTO> getDiscoun() {
         return discountMapper.toDTOList(discountRepository.findAll());
     }
-    /**
-     * Добавляем новое объявление
-     *
-     * @return возвращает созданное объявление
-     */
+    /** Добавить скидку     */
     @Override
     public DiscountDTO addDiscoun( DiscountDTO discountDTO) throws IOException {
         Discount discount = discountRepository.save(discountMapper.toEntity(discountDTO));
         return discountMapper.toDTO(discount);
     }
-    /**
-     * Обновляет объявление
-     *
-     * @param id - идентификатор объявления
-     * @return - обнволенный комментарий
-     */
+    /**     Изменить скидку     */
     @Override
     public DiscountDTO updateDiscoun(int id, DiscountDTO discountDTO) {
         Discount discount = discountRepository.findById(id).orElseThrow(ElemNotFound::new);

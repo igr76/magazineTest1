@@ -61,6 +61,4 @@ public class Users {
     @Column(name = "organization")
     String organization;
 
-
-
 }

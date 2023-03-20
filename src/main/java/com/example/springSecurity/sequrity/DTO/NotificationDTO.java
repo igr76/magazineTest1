@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class NotificationDTO {
+
     /**Заголовок уведомления */
     String title;
     /**Дата создания уведомления      */
@@ -23,4 +24,5 @@ public class NotificationDTO {
     /**   Текст уведомления     */
     @Column(name = "text")
     String text;
+
 }
