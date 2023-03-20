@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Table(name = "discount")
 public class Discount {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categories", nullable = false)
     /** Категория  скидки       */
             Role categories;

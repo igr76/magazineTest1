@@ -6,7 +6,7 @@ import org.springframework.security.core.Authentication;
 
 import java.io.IOException;
 import java.util.Collection;
-
+/** * Сервис скидок */
 public interface OrganizationService {
     /**     Получить список организаций     */
     Collection<OrganizationDTO> getOrganization();

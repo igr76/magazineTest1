@@ -3,6 +3,7 @@ package com.example.springSecurity.sequrity.Entity;
 import lombok.*;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 @Table(name = "organization")
 public class Organization {
     /**   Наименование организации     */
+    @Id
     @Column(name = "name")
     String name;
     /**   Описание организации    */

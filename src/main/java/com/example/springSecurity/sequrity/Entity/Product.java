@@ -2,6 +2,7 @@ package com.example.springSecurity.sequrity.Entity;
 
 import antlr.collections.List;
 import com.example.springSecurity.sequrity.DTO.Categories;
+import com.example.springSecurity.sequrity.DTO.Role;
 import lombok.*;
 
 import javax.persistence.*;
@@ -43,11 +44,11 @@ public class Product {
     /** Скидка на товар
      * @param discount  */
     @Column(name = "discount")
-    Discount discount;
+    Integer discount;
     /** Категория товара
      * @param categories  */
     @Column(name = "categories")
-    Categories categories;
+    Role categories;
     /** Отзывы на товар
      * @param reviews  */
     @Column(name = "reviews")

@@ -3,6 +3,7 @@ package com.example.springSecurity.sequrity.Entity;
 import lombok.*;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 @Getter
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "notification")
 public class Notification {
     /**Заголовок уведомления      */
+    @Id
     @Column(name = "title")
     String title;
     /**Дата создания уведомления      */
