@@ -12,7 +12,7 @@ import java.util.Collection;
 /**
  * маппер для {@link Product} готовый DTO {@link ProductDTO}
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface ProductMapper {
     Product toEntity(ProductDTO productDTO);
      ProductDTO toDTO(Product product);

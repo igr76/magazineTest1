@@ -8,6 +8,7 @@ import com.example.springSecurity.sequrity.Service.DiscountService;
 import com.example.springSecurity.sequrity.exeption.ElemNotFound;
 import com.example.springSecurity.sequrity.loger.FormLogInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.io.IOException;
@@ -21,13 +22,15 @@ import java.util.TimerTask;
 @Slf4j
 @Transactional
 public class DiscountServiceImpl implements DiscountService {
-    DiscountMapper discountMapper;
+
+     DiscountMapper discountMapper;
     DiscountRepository discountRepository;
 
     public DiscountServiceImpl(DiscountMapper discountMapper, DiscountRepository discountRepository) {
         this.discountMapper = discountMapper;
         this.discountRepository = discountRepository;
     }
+
     /**     Получить список скидок     */
     @Override
     public Collection<DiscountDTO> getDiscoun() {

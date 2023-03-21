@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,10 +29,8 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-
     private final UserMapper userMapper;
     SequrityServise sequrityServise;
-
     @Value("${image.user.dir.path}")
     private String userPhotoDir;
 
@@ -68,8 +65,6 @@ public class UserServiceImpl implements UserService {
                 throw new RuntimeException();
             }
         }
-
-
         int id = user.getId();
 
         Users oldUser = findById(id);

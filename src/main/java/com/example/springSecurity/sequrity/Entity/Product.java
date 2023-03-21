@@ -3,10 +3,16 @@ package com.example.springSecurity.sequrity.Entity;
 import antlr.collections.List;
 import com.example.springSecurity.sequrity.DTO.Categories;
 import com.example.springSecurity.sequrity.DTO.Role;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Objects;
+/**
+ * Сущность товаров
+ */
 @Getter
 @Setter
 @ToString
@@ -22,7 +28,7 @@ public class Product {
             Integer id;
     /** Наименование товара
      * @param name  */
-    @Column(name = "organization")
+    @Column(name = "name")
     String name;
     /** Продавец товара
      * @param organization  */
@@ -51,20 +57,39 @@ public class Product {
     Role categories;
     /** Отзывы на товар
      * @param reviews  */
-    @Column(name = "reviews")
+    @ElementCollection
+    @CollectionTable(name = "product_list_of_reviews", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "list_if_reviews")
     ArrayList<String> reviews;
     /** Ключевые слова
      * @param keyword  */
-    @Column(name = "keyword")
+
+    @ElementCollection
+    @CollectionTable(name = "product_list_of_keyword", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "list_if_keyword")
     ArrayList<String> keyword;
     /** Характеристика товара
      * @param specificstions  */
-    @Column(name = "specificstions")
+    @ElementCollection
+    @CollectionTable(name = "product_list_of_specificstions", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "list_if_specificstions")
     ArrayList<Integer> specificstions;
     /** Оценки товара
      * @param estimation  */
-    @Column(name = "estimation")
+    @ElementCollection
+    @CollectionTable(name = "product_list_of_estimation", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "list_if_estimation")
     ArrayList<Integer> estimation;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product product)) return false;
+        return Objects.equals(getId(), product.getId()) && Objects.equals(getName(), product.getName()) && Objects.equals(getOrganization(), product.getOrganization()) && Objects.equals(getDescription(), product.getDescription()) && Objects.equals(getPrice(), product.getPrice()) && Objects.equals(getQuantity(), product.getQuantity()) && Objects.equals(getDiscount(), product.getDiscount()) && getCategories() == product.getCategories() && Objects.equals(getReviews(), product.getReviews()) && Objects.equals(getKeyword(), product.getKeyword()) && Objects.equals(getSpecificstions(), product.getSpecificstions()) && Objects.equals(getEstimation(), product.getEstimation());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getOrganization(), getDescription(), getPrice(), getQuantity(), getDiscount(), getCategories(), getReviews(), getKeyword(), getSpecificstions(), getEstimation());
+    }
 }

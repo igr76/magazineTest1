@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <preConditions>
+        <dbms type="postgresql"/>
+    </preConditions>
+    <changeSet id="1" author="igor">
+        <tagDatabase tag="create_table_users"/>
+    </changeSet>
+    <include file="v-1.0/01-create-table-users.sql" relativeToChangelogFile="true"/>
+    <include file="v-1.0/data/igorBr_01_Insert_User.sql" relativeToChangelogFile="true"/>
+    <include file="v-1.0/addColumn_Password.sql" relativeToChangelogFile="true"/>
+
+
+    <changeSet id="2" author="igor">
+        <tagDatabase tag="create_table_product"/>
+    </changeSet>
+    <include file="v-1.0/02-create-table-product.sql" relativeToChangelogFile="true"/>
+    <include file="v-1.0/data/02_insert_toTableproduct.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="3" author="igor">
+        <tagDatabase tag="create_table_notificstion"/>
+    </changeSet>
+    <include file="v-1.0/03-create-table-notificstion.sql" relativeToChangelogFile="true"/>
+    <include file="v-1.0/data/03_data_for_notificstion_table.sql" relativeToChangelogFile="true"/>
+
+
+    <changeSet id="4" author="igor">
+        <tagDatabase tag="create_table_organization"/>
+    </changeSet>
+    <include file="v-1.0/04-create-table-organization.sql" relativeToChangelogFile="true"/>
+    <include file="v-1.0/data/04_data_for_organization_table.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="5" author="igor">
+        <tagDatabase tag="add_column_to_table_discount"/>
+    </changeSet>
+    <include file="v-1.0/05-add-column-to-table-discount.sql" relativeToChangelogFile="true"/>
+    <include file="v-1.0/data/05_data_for_discount_table.sql" relativeToChangelogFile="true"/>
+
+    <changeSet id="7" author="igor">
+        <tagDatabase tag="update_role_in_table_users"/>
+    </changeSet>
+    <include file="v-1.0/data/08-update-role-in-table-users.sql" relativeToChangelogFile="true"/>
+
+
+</databaseChangeLog>

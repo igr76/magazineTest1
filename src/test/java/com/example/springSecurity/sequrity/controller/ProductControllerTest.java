@@ -20,9 +20,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc(addFilters = false)
 @WebMvcTest(ProductController.class)
 public class ProductControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
-//    @BeforeEach
+//    @Autowired
+//    private MockMvc mockMvc;
+////    @BeforeEach
 //    void init() {
 //        time = "23-02-2022 08:09:10";
 //        price = 11;
