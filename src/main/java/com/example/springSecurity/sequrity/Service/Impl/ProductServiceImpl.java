@@ -176,7 +176,7 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     }
     /**   Получить скидку товара     */
     public Product getDiscauntP(Product product) {
-        Role categories = product.getCategories();
+        Categories categories = product.getCategories();
         product.setDiscount(discountRepository.findByCategories(categories).getVolume());
         return  product;
 

@@ -4,6 +4,9 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,6 +17,10 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class NotificationDTO {
+    /**
+     * id уведомления
+     */
+    Integer id;
 
     /**Заголовок уведомления */
     String title;

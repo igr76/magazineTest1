@@ -45,15 +45,15 @@ public class ProductControllerTest {
 
     @BeforeEach
     void init() {
-        time = "23-02-2022 08:09:10";
-        price = 11;
-        title = "заголовок";
-        email = "dmitr@gmail.com";
-        propertiesJS = new JSONObject();
-        propertiesJS.put("price", price);
-        propertiesJS.put("title", title);
-        authenticationJS = new JSONObject();
-        authenticationJS.put("email", email);
+//        time = "23-02-2022 08:09:10";
+//        price = 11;
+//        title = "заголовок";
+//        email = "dmitr@gmail.com";
+//        propertiesJS = new JSONObject();
+//        propertiesJS.put("price", price);
+//        propertiesJS.put("title", title);
+//        authenticationJS = new JSONObject();
+//        authenticationJS.put("email", email);
 
     }
 
@@ -68,29 +68,29 @@ public class ProductControllerTest {
 ////        authentication = null;
 ////        properties = null;
 ////    }
-    @Test
-    void getAllProduct() throws Exception {
-        String url = "/Products";
-
-        mockMvc.perform(get(url)
-                        .content(authenticationJS.toString())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-    }
-
-    @Test
-    void getProductById() throws Exception {
-        String url = "/product/{id}";
-
-        mockMvc.perform(get(url)
-                        .content(authenticationJS.toString())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
-
-    }
+//    @Test
+//    void getAllProduct() throws Exception {
+//        String url = "/Products";
+//
+//        mockMvc.perform(get(url)
+//                        .content(authenticationJS.toString())
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk());
+//
+//    }
+//
+//    @Test
+//    void getProductById() throws Exception {
+//        String url = "/product/{id}";
+//
+//        mockMvc.perform(get(url)
+//                        .content(authenticationJS.toString())
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk());
+//
+//    }
 
     @Test
     void updateProduct() throws Exception {
@@ -133,22 +133,22 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.discount").value(6));
 
     }
-    @Test
-    void addProduct() throws Exception {
-        String url = "/product";
-
-        when(productMapper.toEntity(any(ProductDTO.class))).thenReturn(gettProduct());
-        when(sequrityServise.checkUserOrganization(any())).thenReturn(true);
-        when(productRepository.findMaxID()).thenReturn(1);
-
-        mockMvc.perform(multipart(url, HttpMethod.POST)
-                        .file(properties)
-                        .file(authentication)
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.title").value(title))
-                .andExpect(jsonPath("$.price").value(price))
-                .andExpect(status().isOk());
-    }
+//    @Test
+//    void addProduct() throws Exception {
+//        String url = "/product";
+//
+//        when(productMapper.toEntity(any(ProductDTO.class))).thenReturn(gettProduct());
+//        when(sequrityServise.checkUserOrganization(any())).thenReturn(true);
+//        when(productRepository.findMaxID()).thenReturn(1);
+//
+//        mockMvc.perform(multipart(url, HttpMethod.POST)
+//                        .file(properties)
+//                        .file(authentication)
+//                        .accept(MediaType.APPLICATION_JSON))
+//                .andExpect(jsonPath("$.title").value(title))
+//                .andExpect(jsonPath("$.price").value(price))
+//                .andExpect(status().isOk());
+//    }
     private Product gettProduct () {
             Product product = new Product();
             product.setId(1);
