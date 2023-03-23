@@ -23,8 +23,8 @@ import java.util.TimerTask;
 @Transactional
 public class DiscountServiceImpl implements DiscountService {
 
-     DiscountMapper discountMapper;
-    DiscountRepository discountRepository;
+    private DiscountMapper discountMapper;
+    private  DiscountRepository discountRepository;
 
     public DiscountServiceImpl(DiscountMapper discountMapper, DiscountRepository discountRepository) {
         this.discountMapper = discountMapper;

@@ -13,7 +13,7 @@
     </changeSet>
     <include file="v-1.0/01-create-table-users.sql" relativeToChangelogFile="true"/>
     <include file="v-1.0/data/igorBr_01_Insert_User.sql" relativeToChangelogFile="true"/>
-    <include file="v-1.0/addColumn_Password.sql" relativeToChangelogFile="true"/>
+
 
 
     <changeSet id="2" author="igor">
@@ -41,10 +41,7 @@
     <include file="v-1.0/05-add-column-to-table-discount.sql" relativeToChangelogFile="true"/>
     <include file="v-1.0/data/05_data_for_discount_table.sql" relativeToChangelogFile="true"/>
 
-    <changeSet id="7" author="igor">
-        <tagDatabase tag="update_role_in_table_users"/>
-    </changeSet>
-    <include file="v-1.0/data/08-update-role-in-table-users.sql" relativeToChangelogFile="true"/>
+
 
 
 </databaseChangeLog>

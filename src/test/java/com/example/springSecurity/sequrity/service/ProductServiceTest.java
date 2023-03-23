@@ -43,163 +43,163 @@ import java.util.Optional;
  */
 @ExtendWith(MockitoExtension.class)
 public class ProductServiceTest {
-//    @InjectMocks
-//    private ProductServiceImpl productService;
-//
-//    @Mock
-//    private UserService userService;
-//    @Mock
-//    ProductRepository productRepository;
-//    @Mock
-//    SequrityServise sequrityServise;
-//    ProductMapper productMapper;
-//    @Mock
-//    NotificationRepository notificationRepository;
-//    @Mock
-//    NotificationMapper notificationMapper;
-//    ProductHistoryRepository productHistoryRepository;
-//    @Mock
-//    Product product;
-//    NotificationDTO notificationDTO;
-//    ProductDTO productDTO;
-//    UserDTO userDTO;
-//    Users users;
-//    ProductHistory productHistory;
-//    @BeforeEach
-//    void init() {
-////        Product product1 = new Product(1,"igr","IBM","222",
-////                654,67,null,null,null,null,
-////                null,null);
-////        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
-////                654,67,null,null,null,null,
-////                null,null);
-//
-//    }
-//
-//    @Test
-//    void getProductById() {
+    @InjectMocks
+    private ProductServiceImpl productService;
+
+    @Mock
+    private UserService userService;
+    @Mock
+    ProductRepository productRepository;
+    @Mock
+    SequrityServise sequrityServise;
+    ProductMapper productMapper;
+    @Mock
+    NotificationRepository notificationRepository;
+    @Mock
+    NotificationMapper notificationMapper;
+    ProductHistoryRepository productHistoryRepository;
+    @Mock
+    Product product;
+    NotificationDTO notificationDTO;
+    ProductDTO productDTO;
+    UserDTO userDTO;
+    Users users;
+    ProductHistory productHistory;
+    @BeforeEach
+    void init() {
 //        Product product1 = new Product(1,"igr","IBM","222",
 //                654,67,null,null,null,null,
 //                null,null);
 //        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
 //                654,67,null,null,null,null,
 //                null,null);
-//        when(productRepository.findById(anyInt())).thenReturn(Optional.of(product1));
-//        assertThat(productService.getProductById(1)).isEqualTo(productDTO1);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void updateProduct() {
-//        Product product1 = new Product(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        Authentication authentication = Mockito.mock(Authentication.class);
-//        when(productRepository.save(any())).thenReturn(Optional.of(product1));
-//        when(sequrityServise.checkUserOrganization(any())).thenReturn(true);
-//        when(productMapper.toEntity(any())).thenReturn((product1));
-//        assertThat(productService.updateProduct(1,productDTO1,authentication)).isEqualTo(productDTO1);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void addProduct() {
-//        Product product1 = new Product(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        Authentication authentication = Mockito.mock(Authentication.class);
-//        when(productRepository.findMaxID()).thenReturn(0);
-//        when(sequrityServise.checkAuthorEmailAndAdsId(anyInt(),any())).thenReturn(true);
-//        when(productMapper.toEntity(any())).thenReturn((product1));
-//        assertThat(productService.updateProduct(1,productDTO1,authentication)).isEqualTo(productDTO1);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void deleteProduct() {
-//        Product product1 = new Product(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
+
+    }
+
+    @Test
+    void getProductById() {
+        Product product1 = new Product(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        when(productRepository.findById(anyInt())).thenReturn(Optional.of(product1));
+        assertThat(productService.getProductById(1)).isEqualTo(productDTO1);
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void updateProduct() {
+        Product product1 = new Product(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        Authentication authentication = Mockito.mock(Authentication.class);
+        when(productRepository.save(any())).thenReturn(Optional.of(product1));
+        when(sequrityServise.checkUserOrganization(any())).thenReturn(true);
+        when(productMapper.toEntity(any())).thenReturn((product1));
+        assertThat(productService.updateProduct(1,productDTO1,authentication)).isEqualTo(productDTO1);
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void addProduct() {
+        Product product1 = new Product(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        Authentication authentication = Mockito.mock(Authentication.class);
+        when(productRepository.findMaxID()).thenReturn(0);
+        when(sequrityServise.checkAuthorEmailAndAdsId(anyInt(),any())).thenReturn(true);
+        when(productMapper.toEntity(any())).thenReturn((product1));
+        assertThat(productService.updateProduct(1,productDTO1,authentication)).isEqualTo(productDTO1);
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void deleteProduct() {
+        Product product1 = new Product(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        Authentication authentication = Mockito.mock(Authentication.class);
+        when(productRepository.findById(any())).thenReturn(Optional.of(product1));
+        when(sequrityServise.checkAuthorEmailAndAdsId(anyInt(),any())).thenReturn(true);
+        when(sequrityServise.checkIsAdmin(any())).thenReturn(true);
+        when(sequrityServise.checkUserOrganization(any())).thenReturn(true);
+        doNothing().when(productService).deleteProduct(anyInt(),authentication);
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void addNotification() {
+        LocalDateTime date = LocalDateTime.parse("2007-12-03T10:15:30");
+        NotificationDTO notificationDTO = new NotificationDTO("333", date, "333");
+        Notification notification = new Notification("333", date, "333");
+        when(notificationMapper.toEntity(any())).thenReturn(notification);
+        assertThat(notificationRepository.save(any())).isEqualTo(notification);
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void buyProduct() {
+        Product product1 = new Product(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        ProductHistory productHistory1 = new ProductHistory(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        Authentication authentication = Mockito.mock(Authentication.class);
+        when(productRepository.findById(anyInt())).thenReturn(Optional.of(product1));
+        when(sequrityServise.checkAuthorEmailAndAdsId(anyInt(),any())).thenReturn(true);
+        when(sequrityServise.getUserByEmail(any()).getBalance()).thenReturn(55555);
+        when(productMapper.toHistory(any())).thenReturn((productHistory1));
+        when(productHistoryRepository.save(any(ProductHistory.class))).thenReturn(productHistory1);
+        assertEquals(productService.updateProduct(1,productDTO1,authentication),productHistory1);
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void refundProduct() {
+        Product product1 = new Product(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+//        Users user1 = new Users(1,"igr","user@gmail.com", "11111111", "94455",
+//                 "path/to/image",   Role.USER,"IBM");
 //        Authentication authentication = Mockito.mock(Authentication.class);
 //        when(productRepository.findById(any())).thenReturn(Optional.of(product1));
 //        when(sequrityServise.checkAuthorEmailAndAdsId(anyInt(),any())).thenReturn(true);
-//        when(sequrityServise.checkIsAdmin(any())).thenReturn(true);
-//        when(sequrityServise.checkUserOrganization(any())).thenReturn(true);
+//        when(sequrityServise.isAdmin(any())).thenReturn(true);
+//        when(sequrityServise.getUserByEmail(any())).thenReturn(user1);
 //        doNothing().when(productService).deleteProduct(anyInt(),authentication);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void addNotification() {
-//        LocalDateTime date = LocalDateTime.parse("2007-12-03T10:15:30");
-//        NotificationDTO notificationDTO = new NotificationDTO("333", date, "333");
-//        Notification notification = new Notification("333", date, "333");
-//        when(notificationMapper.toEntity(any())).thenReturn(notification);
-//        assertThat(notificationRepository.save(any())).isEqualTo(notification);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void buyProduct() {
-//        Product product1 = new Product(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        ProductHistory productHistory1 = new ProductHistory(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        Authentication authentication = Mockito.mock(Authentication.class);
-//        when(productRepository.findById(anyInt())).thenReturn(Optional.of(product1));
-//        when(sequrityServise.checkAuthorEmailAndAdsId(anyInt(),any())).thenReturn(true);
-//        when(sequrityServise.getUserByEmail(any()).getBalance()).thenReturn(55555);
-//        when(productMapper.toHistory(any())).thenReturn((productHistory1));
-//        when(productHistoryRepository.save(any(ProductHistory.class))).thenReturn(productHistory1);
-//        assertEquals(productService.updateProduct(1,productDTO1,authentication),productHistory1);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void refundProduct() {
-//        Product product1 = new Product(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-////        Users user1 = new Users(1,"igr","user@gmail.com", "11111111", "94455",
-////                 "path/to/image",   Role.USER,"IBM");
-////        Authentication authentication = Mockito.mock(Authentication.class);
-////        when(productRepository.findById(any())).thenReturn(Optional.of(product1));
-////        when(sequrityServise.checkAuthorEmailAndAdsId(anyInt(),any())).thenReturn(true);
-////        when(sequrityServise.isAdmin(any())).thenReturn(true);
-////        when(sequrityServise.getUserByEmail(any())).thenReturn(user1);
-////        doNothing().when(productService).deleteProduct(anyInt(),authentication);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void toLeaveReviews() {
-//        Product product1 = new Product(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
-//                654,67,null,null,null,null,
-//                null,null);
-//        Authentication authentication = Mockito.mock(Authentication.class);
-//        when(productRepository.findById(any())).thenReturn(Optional.of(product1));
-//        when(sequrityServise.checkAuthorEmailAndAdsId(any(),authentication)).thenReturn(true);
-//        when(productMapper.toDTO(any())).thenReturn((productDTO1));
-//        assertThat(productService.toLeaveReviews(1,authentication,null,0)).isEqualTo(productDTO1);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
-//    @Test
-//    void writeNotification() {
-//        LocalDateTime date = LocalDateTime.parse("2007-12-03T10:15:30");
-//        NotificationDTO notificationDTO = new NotificationDTO("333", date, "333");
-//        Notification notification = new Notification("333", date, "333");
-//        when(notificationMapper.toEntity(any())).thenReturn(notification);
-//        assertThat(notificationRepository.save(any())).isEqualTo(notification);
-//        verify(productRepository, times(1)).findAllById(any());
-//    }
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void toLeaveReviews() {
+        Product product1 = new Product(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        ProductDTO productDTO1 = new ProductDTO(1,"igr","IBM","222",
+                654,67,null,null,null,null,
+                null,null);
+        Authentication authentication = Mockito.mock(Authentication.class);
+        when(productRepository.findById(any())).thenReturn(Optional.of(product1));
+        when(sequrityServise.checkAuthorEmailAndAdsId(any(),authentication)).thenReturn(true);
+        when(productMapper.toDTO(any())).thenReturn((productDTO1));
+        assertThat(productService.toLeaveReviews(1,authentication,null,0)).isEqualTo(productDTO1);
+        verify(productRepository, times(1)).findAllById(any());
+    }
+    @Test
+    void writeNotification() {
+        LocalDateTime date = LocalDateTime.parse("2007-12-03T10:15:30");
+        NotificationDTO notificationDTO = new NotificationDTO("333", date, "333");
+        Notification notification = new Notification("333", date, "333");
+        when(notificationMapper.toEntity(any())).thenReturn(notification);
+        assertThat(notificationRepository.save(any())).isEqualTo(notification);
+        verify(productRepository, times(1)).findAllById(any());
+    }
 }

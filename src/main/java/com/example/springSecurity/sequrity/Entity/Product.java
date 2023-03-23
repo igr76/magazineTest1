@@ -54,7 +54,7 @@ public class Product {
     /** Категория товара
      * @param categories  */
     @Column(name = "categories")
-    Role categories;
+    Categories categories;
     /** Отзывы на товар
      * @param reviews  */
     @ElementCollection
