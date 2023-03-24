@@ -58,38 +58,27 @@ public class UserServiceImpl implements UserService {
     public UserDTO updateUser(UserDTO newUserDto, Authentication authentication) {
         log.info(FormLogInfo.getInfo());
         String nameEmail = authentication.getName();
-        Users user = findEntityByEmail(nameEmail);
+        Users user = userRepository.findByEmail(nameEmail).orElseThrow(ElemNotFound::new);
         if (!sequrityServise.checkIsAdmin(authentication)) {
-            if (newUserDto.getBalance() == user.getBalance() || newUserDto.getRole() == user.getRole()
-                    || newUserDto.getOrganization() == user.getOrganization()) {
+            if (!(nameEmail.equals(newUserDto.getEmail())||newUserDto.getBalance() == user.getBalance()
+                    || newUserDto.getRole() == user.getRole()|| newUserDto.getOrganization() == user.getOrganization())) {
                 throw new RuntimeException();
             }
         }
-        int id = user.getId();
 
-        Users oldUser = findById(id);
-
-        oldUser.setEmail(user.getEmail());
-        oldUser.setPassword(user.getPassword());
-        oldUser.setUserName(newUserDto.getUserName());
-        oldUser.setBalance(newUserDto.getBalance());
-        oldUser.setRole(newUserDto.getRole());
-        oldUser.setOrganization(newUserDto.getOrganization());
+        Users newUser = userMapper.toEntity(newUserDto);
+        user.setEmail(newUser.getEmail());
+        user.setPassword(newUser.getPassword());
+        user.setUserName(newUser.getUserName());
+        user.setBalance(newUser.getBalance());
+        user.setRole(newUser.getRole());
+        user.setOrganization(newUser.getOrganization());
 
 
-          // oldUser.setImage(user.getImage());
-        userRepository.save(oldUser);
+          // user.setImage(user.getImage());
+        userRepository.save(user);
 
-        return userMapper.toDTO(oldUser);
-    }
-
-    /**
-     * Установить пароль пользователя
-     */
-    @Override
-    public NewPassword setPassword(NewPassword newPassword) {
-        log.info(FormLogInfo.getInfo());
-        return null;
+        return userMapper.toDTO(user);
     }
 
     /**
@@ -156,16 +145,6 @@ public class UserServiceImpl implements UserService {
 //        return bytes;
 //    }
 
-    /**
-     * найти пользователя по id
-     *
-     * @param id id пользователя
-     * @return пользователь
-     */
-    private Users findById(int id) {
-        log.info(FormLogInfo.getInfo());
-        return userRepository.findById(id).orElseThrow(ElemNotFound::new);
-    }
 
     /**
      * найти пользователя по email - логину

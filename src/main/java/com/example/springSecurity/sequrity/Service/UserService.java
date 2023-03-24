@@ -18,10 +18,6 @@ public interface UserService {
      */
     UserDTO updateUser(UserDTO userDto, Authentication authentication) ;
 
-    /**
-     * установить новый пароль пользователя
-     */
-    NewPassword setPassword(NewPassword newPassword);
 
     /**
      * обновить фото пользователя
