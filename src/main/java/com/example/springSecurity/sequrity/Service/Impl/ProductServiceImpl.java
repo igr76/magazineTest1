@@ -27,22 +27,22 @@ import java.util.stream.Collectors;
 @Slf4j
 @Transactional
 public class ProductServiceImpl implements com.example.springSecurity.sequrity.Service.ProductService {
-    ProductRepository productRepository;
-    ProductMapper productMapper;
-    SequrityServise sequrityServise;
-    NotificationRepository notificationRepository;
-    NotificationMapper notificationMapper;
-    ProductDTOHistory productDTOHistory;
-    ProductHistory productHistory;
-    UserRepository userRepository;
-    DiscountRepository discountRepository;
-    Discount discount;
+    private ProductRepository productRepository;
+    private ProductMapper productMapper;
+    private SequrityServise sequrityServise;
+    private NotificationRepository notificationRepository;
+    private NotificationMapper notificationMapper;
+    private ProductDTOHistory productDTOHistory;
+    private ProductHistory productHistory;
+    private UserRepository userRepository;
+    private DiscountRepository discountRepository;
+    private Discount discount;
 
-    UserMapper userMapper;
-    ProductDTO productDTO;
+    private UserMapper userMapper;
+    private ProductDTO productDTO;
 
-    ProductHistoryRepository productHistoryRepository;
-    Product product;
+    private ProductHistoryRepository productHistoryRepository;
+    private Product product;
     /**     Получить список товаров     */
     @Override
     public Collection<ProductDTO> getAllProduct(Categories categories) {

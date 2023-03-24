@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
     private  UserRepository userRepository;
     private  UserMapper userMapper;
     SequrityServise sequrityServise;
-    @Value("${image.user.dir.path}")
-    private String userPhotoDir;
+//    @Value("${image.user.dir.path}")
+//    private String userPhotoDir;
 
     public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
@@ -95,66 +95,66 @@ public class UserServiceImpl implements UserService {
     /**
      * загрузить аватарку пользователя
      */
-    @Override
-    public void updateUserImage(MultipartFile image, Authentication authentication) {
-        log.info(FormLogInfo.getInfo());
-
-        String nameEmail = authentication.getName();
-        Users userEntity = findEntityByEmail(nameEmail);
-        String linkToGetImage = "/users" + "/" + userEntity.getId();
-        Path filePath = Path.of(userPhotoDir,
-                Objects.requireNonNull(String.valueOf(userEntity.getId())));
-
-//        if(userEntity.getImage() != null){
-//            try {
-//                Files.deleteIfExists(filePath);
-//                userEntity.setImage(null);
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
+//    @Override
+//    public void updateUserImage(MultipartFile image, Authentication authentication) {
+//        log.info(FormLogInfo.getInfo());
 //
+//        String nameEmail = authentication.getName();
+//        Users userEntity = findEntityByEmail(nameEmail);
+//        String linkToGetImage = "/users" + "/" + userEntity.getId();
+//        Path filePath = Path.of(userPhotoDir,
+//                Objects.requireNonNull(String.valueOf(userEntity.getId())));
+//
+////        if(userEntity.getImage() != null){
+////            try {
+////                Files.deleteIfExists(filePath);
+////                userEntity.setImage(null);
+////            } catch (IOException e) {
+////                throw new RuntimeException(e);
+////            }
+////
+////        }
+//
+//
+//        try {
+//            Files.createDirectories(filePath.getParent());
+//            Files.deleteIfExists(filePath);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
 //        }
-
-
-        try {
-            Files.createDirectories(filePath.getParent());
-            Files.deleteIfExists(filePath);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        try (InputStream is = image.getInputStream();
-             OutputStream os = Files.newOutputStream(filePath, CREATE_NEW);
-             BufferedInputStream bis = new BufferedInputStream(is, 1024);
-             BufferedOutputStream bos = new BufferedOutputStream(os, 1024)) {
-
-            bis.transferTo(bos);
-
-          //  userEntity.setImage(linkToGetImage);
-            userRepository.save(userEntity);
-
-        } catch (Exception e) {
-            log.info("Ошибка сохранения файла");
-        }
-
-    }
-
-    /**
-     * получить фото пользователя
-     *
-     * @return фото конвертированная в массив байтов
-     */
-    public byte[] getPhotoById(Integer id) {
-        String linkToGetImage = "user_photo_dir/" + id;
-        byte[] bytes;
-        try {
-            bytes = Files.readAllBytes(Paths.get(linkToGetImage));
-        } catch (IOException e) {
-            log.info(FormLogInfo.getCatch());
-            throw new RuntimeException(e);
-        }
-        return bytes;
-    }
+//
+//        try (InputStream is = image.getInputStream();
+//             OutputStream os = Files.newOutputStream(filePath, CREATE_NEW);
+//             BufferedInputStream bis = new BufferedInputStream(is, 1024);
+//             BufferedOutputStream bos = new BufferedOutputStream(os, 1024)) {
+//
+//            bis.transferTo(bos);
+//
+//          //  userEntity.setImage(linkToGetImage);
+//            userRepository.save(userEntity);
+//
+//        } catch (Exception e) {
+//            log.info("Ошибка сохранения файла");
+//        }
+//
+//    }
+//
+//    /**
+//     * получить фото пользователя
+//     *
+//     * @return фото конвертированная в массив байтов
+//     */
+//    public byte[] getPhotoById(Integer id) {
+//        String linkToGetImage = "user_photo_dir/" + id;
+//        byte[] bytes;
+//        try {
+//            bytes = Files.readAllBytes(Paths.get(linkToGetImage));
+//        } catch (IOException e) {
+//            log.info(FormLogInfo.getCatch());
+//            throw new RuntimeException(e);
+//        }
+//        return bytes;
+//    }
 
     /**
      * найти пользователя по id
