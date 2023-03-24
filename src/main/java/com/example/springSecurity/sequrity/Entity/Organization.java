@@ -26,8 +26,8 @@ public class Organization {
     String logotipe;
     /**   Товары организации     */
     @ElementCollection
-    @CollectionTable(name = "product_list_of_reviews", joinColumns = @JoinColumn(name = "product_id"))
-    @Column(name = "list_if_productO")
+    @CollectionTable(name = "list_if_products", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "list_if_products")
     ArrayList<String>  product;
     /** Статус организации  */
     @Column(name = "status")

@@ -8,8 +8,7 @@ CREATE TABLE product
     price int,
     quantity int,
     discount int,
-    categories TEXT,
-    constraint fk_organization_id foreign key (organization) references organization (name)
+    categories TEXT
 );
 -- Вспомогательная таблица для списка отзывов
 CREATE TABLE product_list_of_reviews
@@ -30,7 +29,7 @@ CREATE TABLE product_list_of_specificstions
 (
     product_id  bigint,
     index       bigint,
-    list_if_specificstions text
+    list_if_specificstions int
 );
 -- Вспомогательная таблица для списка оценок товара
 CREATE TABLE product_list_of_estimation

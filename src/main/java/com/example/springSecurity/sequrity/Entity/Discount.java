@@ -19,7 +19,7 @@ public class Discount {
     @Id
     @Column(name = "categories", nullable = false)
     /** Категория  скидки       */
-            Role categories;
+    Categories categories;
     /** Размер скидки       */
     @Column(name = "volume")
     Integer volume;

@@ -47,7 +47,7 @@ public class Users {
     /**
      * пароль пользователя
      */
-    @Column(name = "password")
+    @Column(name = "balance")
     Integer balance;
     /**
      * статус пользователя

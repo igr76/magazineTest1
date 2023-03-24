@@ -1,7 +1,7 @@
 CREATE TABLE users
 (
     id  serial PRIMARY KEY ,
-    userName TEXT,
+    user_name TEXT,
     email TEXT,
     password TEXT,
     balance int,

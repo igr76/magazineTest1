@@ -1,2 +1,0 @@
-ALTER TABLE users
-    ADD COLUMN password VARCHAR NOT NULL default '$2a$12$67n1P2Y2mjtT9iw0IazqDOXrua6DcLpQd02xFz0J4DLQeuZu.6YBq';

@@ -1,6 +1,6 @@
-CREATE TABLE notification
+CREATE TABLE discount
 (
     categories TEXT primary key,
     volume int,
-    LocalDateTime TIMESTAMP
+    created_ds TIMESTAMP
 );
