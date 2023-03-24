@@ -2,9 +2,9 @@
 INSERT INTO product(
     id   , name , organization,  description, price, quantity, discount, categories )
 VALUES
-    (1,'ТВ1','IBM1','Good1',1111,2,15,'SHOES'),
-    (2,'ТВ2','IBM1','Good1',1221,2,15,'SHOES'),
-    (3,'ТВ3','IBM1','Good1',1141,2,15,'SHOES');
+    ('ТВ1','IBM1','Good1',1111,2,15,'SHOES'),
+    ('ТВ2','IBM1','Good1',1221,2,15,'SHOES'),
+    ('ТВ3','IBM1','Good1',1141,2,15,'SHOES');
 
 -- Вспомогательная таблица для списка отзывов
 INSERT INTO public.product_list_of_reviews(
