@@ -2,11 +2,11 @@ package com.example.springSecurity.sequrity.Entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
-
+/**
+ * Сущность организаций
+ */
 @Getter
 @Setter
 @ToString
@@ -25,7 +25,9 @@ public class Organization {
     @Column(name = "logotipe")
     String logotipe;
     /**   Товары организации     */
-    @Column(name = "product")
+    @ElementCollection
+    @CollectionTable(name = "list_if_products", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "list_if_products")
     ArrayList<String>  product;
     /** Статус организации  */
     @Column(name = "status")

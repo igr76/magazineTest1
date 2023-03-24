@@ -2,10 +2,11 @@ package com.example.springSecurity.sequrity.Entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+/**
+ * Сущность уведомлений
+ */
 @Getter
 @Setter
 @ToString
@@ -13,8 +14,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "notification")
 public class Notification {
-    /**Заголовок уведомления      */
+    /**
+     * id уведомления
+     */
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    Integer id;
+    /**Заголовок уведомления      */
     @Column(name = "title")
     String title;
     /**Дата создания уведомления      */

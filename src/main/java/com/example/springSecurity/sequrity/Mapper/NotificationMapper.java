@@ -10,7 +10,7 @@ import java.util.Optional;
 /**
  * маппер для {@link Notification} готовый DTO {@link NotificationDTO}
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface NotificationMapper {
     Notification toEntity(NotificationDTO notificationDTO);
 

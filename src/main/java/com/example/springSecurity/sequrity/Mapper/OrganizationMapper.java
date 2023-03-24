@@ -11,7 +11,7 @@ import java.util.Collection;
 /**
  * маппер для {@link Organization} готовый DTO {@link OrganizationDTO}
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface OrganizationMapper {
 
     Organization toEntity(OrganizationDTO organizationDTO);

@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,11 +28,9 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 @Slf4j
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-
-    private final UserMapper userMapper;
+    private  UserRepository userRepository;
+    private  UserMapper userMapper;
     SequrityServise sequrityServise;
-
     @Value("${image.user.dir.path}")
     private String userPhotoDir;
 
@@ -68,8 +65,6 @@ public class UserServiceImpl implements UserService {
                 throw new RuntimeException();
             }
         }
-
-
         int id = user.getId();
 
         Users oldUser = findById(id);
@@ -82,7 +77,7 @@ public class UserServiceImpl implements UserService {
         oldUser.setOrganization(newUserDto.getOrganization());
 
 
-           oldUser.setImage(user.getImage());
+          // oldUser.setImage(user.getImage());
         userRepository.save(oldUser);
 
         return userMapper.toDTO(oldUser);
@@ -110,15 +105,15 @@ public class UserServiceImpl implements UserService {
         Path filePath = Path.of(userPhotoDir,
                 Objects.requireNonNull(String.valueOf(userEntity.getId())));
 
-        if(userEntity.getImage() != null){
-            try {
-                Files.deleteIfExists(filePath);
-                userEntity.setImage(null);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        }
+//        if(userEntity.getImage() != null){
+//            try {
+//                Files.deleteIfExists(filePath);
+//                userEntity.setImage(null);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//        }
 
 
         try {
@@ -135,7 +130,7 @@ public class UserServiceImpl implements UserService {
 
             bis.transferTo(bos);
 
-            userEntity.setImage(linkToGetImage);
+          //  userEntity.setImage(linkToGetImage);
             userRepository.save(userEntity);
 
         } catch (Exception e) {

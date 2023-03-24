@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.User;
 /**
  * маппер для {@link Users} готовый DTO {@link UserDTO}
  */
-@Mapper
+@Mapper(componentModel = "spring")
 public interface UserMapper {
     Users toEntity(UserDTO userDTO);
     UserDTO toDTO(Users user);

@@ -16,9 +16,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import javax.management.timer.Timer;
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.TimerTask;
 import java.util.stream.Collectors;
 /** * Сервис товаров */
 @Service
@@ -174,11 +176,12 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     }
     /**   Получить скидку товара     */
     public Product getDiscauntP(Product product) {
-        Role categories = product.getCategories();
+        Categories categories = product.getCategories();
         product.setDiscount(discountRepository.findByCategories(categories).getVolume());
         return  product;
 
     }
+
 
 
 }

@@ -8,7 +8,9 @@ import org.aspectj.weaver.ast.Not;
 
 import javax.persistence.*;
 import java.util.List;
-
+/**
+ * Сущность пользователей
+ */
 @Getter
 @Setter
 @ToString
@@ -42,17 +44,14 @@ public class Users {
      */
     @Column(name = "password")
     String password;
-
     /**
      * пароль пользователя
      */
-    @Column(name = "password")
+    @Column(name = "balance")
     Integer balance;
     /**
-     * фото пользователя
+     * статус пользователя
      */
-    @Column(name = "image")
-    String image;
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -60,5 +59,10 @@ public class Users {
      * @param organization  */
     @Column(name = "organization")
     String organization;
+    /**
+     * фото пользователя
+     */
+//    @Column(name = "image")
+//    String image;
 
 }

@@ -6,12 +6,14 @@ import com.example.springSecurity.sequrity.DTO.ProductDTO;
 import com.example.springSecurity.sequrity.DTO.ProductDTOHistory;
 import com.example.springSecurity.sequrity.Entity.Product;
 import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Collection;
 
 /** * Сервис товаров */
+
 public interface ProductService {
 
     /**     Получить список товаров     */
