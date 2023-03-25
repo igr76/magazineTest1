@@ -20,9 +20,9 @@ import java.util.Collection;
 @Slf4j
 @Transactional
 public class OrganizationServiceImpl implements OrganizationService {
-    OrganizationMapper organizationMapper;
-    OrganizationRepository organizationRepository;
-    SequrityServise sequrityServise;
+    private OrganizationMapper organizationMapper;
+    private OrganizationRepository organizationRepository;
+    private SequrityServise sequrityServise;
     /**     Получить список организаций     */
     @Override
     public Collection<OrganizationDTO> getOrganization() {

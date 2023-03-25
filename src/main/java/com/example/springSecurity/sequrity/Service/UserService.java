@@ -18,19 +18,15 @@ public interface UserService {
      */
     UserDTO updateUser(UserDTO userDto, Authentication authentication) ;
 
-    /**
-     * установить новый пароль пользователя
-     */
-    NewPassword setPassword(NewPassword newPassword);
 
     /**
      * обновить фото пользователя
      */
-    void updateUserImage(MultipartFile image, Authentication authentication);
+//    void updateUserImage(MultipartFile image, Authentication authentication);
 
 
     /**
      * получить фото пользователя
      */
-    byte[] getPhotoById(Integer id);
+//    byte[] getPhotoById(Integer id);
 }

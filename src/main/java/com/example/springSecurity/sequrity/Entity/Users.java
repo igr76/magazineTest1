@@ -16,9 +16,8 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "users")
 public class Users {
-    SequrityServise sequrityServise;
     /**
      * id пользователя
      */
@@ -52,9 +51,9 @@ public class Users {
     /**
      * статус пользователя
      */
-    @Column(name = "role")
+    @Column(name = "roles")
     @Enumerated(EnumType.STRING)
-    private Role role;
+    Role role;
     /** Продавец товара
      * @param organization  */
     @Column(name = "organization")

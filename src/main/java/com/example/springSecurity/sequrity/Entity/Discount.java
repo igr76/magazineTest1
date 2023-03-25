@@ -26,5 +26,4 @@ public class Discount {
     /**Дата завершения скидки       */
     @Column(name = "created_ds")
     LocalDateTime createdDs;
-
 }
