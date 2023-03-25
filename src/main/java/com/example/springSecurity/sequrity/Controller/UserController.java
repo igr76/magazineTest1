@@ -34,40 +34,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @Operation(summary = "Установить новый пароль")
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "OK",
-                    content =
-                    @Content(
-                            array = @ArraySchema(schema = @Schema(implementation = NewPassword.class)))
-            ),
-            @ApiResponse(
-                    responseCode = "401",
-                    description = "Unauthorized",
-                    content = @Content(schema = @Schema())
-            ),
-            @ApiResponse(
-                    responseCode = "403",
-                    description = "Forbidden",
-                    content = @Content(schema = @Schema())
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "Not Found",
-                    content = @Content(schema = @Schema())
-            )
-    })
-    @PostMapping(value = "/setPassword")
-    public ResponseEntity<NewPassword> setPassword(
-            @RequestBody
-            @NotBlank(message = "newPassword не должен быть пустым") NewPassword newPassword) {
-        log.info(FormLogInfo.getInfo());
-        NewPassword newPasswordDTO = userService.setPassword(newPassword);
-        return ResponseEntity.ok(newPasswordDTO);
-    }
-
     @Operation(summary = "Получить пользователя")
     @ApiResponses({
             @ApiResponse(
@@ -135,53 +101,53 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUser(userDto, authentication));
     }
 
-    @Operation(summary = "Обновить изображение пользователя")
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "OK",
-                    content = @Content(
-                            array = @ArraySchema())
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "Not Found",
-                    content = @Content(schema = @Schema())
-            )
-    })
-    @PatchMapping(value = "/me/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> updateUserImage(@RequestParam MultipartFile image,
-                                             Authentication authentication) {
-        log.info(FormLogInfo.getInfo());
-        userService.updateUserImage(image, authentication);
-        return ResponseEntity.ok().build();
-    }
+//    @Operation(summary = "Обновить изображение пользователя")
+//    @ApiResponses({
+//            @ApiResponse(
+//                    responseCode = "200",
+//                    description = "OK",
+//                    content = @Content(
+//                            array = @ArraySchema())
+//            ),
+//            @ApiResponse(
+//                    responseCode = "404",
+//                    description = "Not Found",
+//                    content = @Content(schema = @Schema())
+//            )
+//    })
+//    @PatchMapping(value = "/me/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<?> updateUserImage(@RequestParam MultipartFile image,
+//                                             Authentication authentication) {
+//        log.info(FormLogInfo.getInfo());
+//        userService.updateUserImage(image, authentication);
+//        return ResponseEntity.ok().build();
+//    }
 
-
-    @Operation(summary = "Получить аватарку юзера")
-    @ApiResponses({
-            @ApiResponse(
-                    responseCode = "200",
-                    description = "OK"
-            ),
-            @ApiResponse(
-                    responseCode = "401",
-                    description = "Unauthorized"
-            ),
-            @ApiResponse(
-                    responseCode = "403",
-                    description = "Forbidden"
-            ),
-            @ApiResponse(
-                    responseCode = "404",
-                    description = "Not Found"
-            )
-    })
-    @GetMapping(value = "{id}", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<byte[]> getUserImage(@PathVariable(value = "id") Integer id) {
-        log.info(FormLogInfo.getInfo());
-        return ResponseEntity.ok(userService.getPhotoById(id));
-    }
+//
+//    @Operation(summary = "Получить аватарку юзера")
+//    @ApiResponses({
+//            @ApiResponse(
+//                    responseCode = "200",
+//                    description = "OK"
+//            ),
+//            @ApiResponse(
+//                    responseCode = "401",
+//                    description = "Unauthorized"
+//            ),
+//            @ApiResponse(
+//                    responseCode = "403",
+//                    description = "Forbidden"
+//            ),
+//            @ApiResponse(
+//                    responseCode = "404",
+//                    description = "Not Found"
+//            )
+//    })
+//    @GetMapping(value = "{id}", produces = MediaType.IMAGE_PNG_VALUE)
+//    public ResponseEntity<byte[]> getUserImage(@PathVariable(value = "id") Integer id) {
+//        log.info(FormLogInfo.getInfo());
+//        return ResponseEntity.ok(userService.getPhotoById(id));
+//    }
 
 
 

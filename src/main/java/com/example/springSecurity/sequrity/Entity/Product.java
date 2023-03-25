@@ -73,7 +73,7 @@ public class Product {
     @ElementCollection
     @CollectionTable(name = "product_list_of_specificstions", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "list_if_specificstions")
-    ArrayList<Integer> specificstions;
+    ArrayList<String> specificstions;
     /** Оценки товара
      * @param estimation  */
     @ElementCollection

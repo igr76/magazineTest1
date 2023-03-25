@@ -95,7 +95,7 @@ public class ProductController {
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "OK",
+                    description = "ProductDTO update",
                     content = @Content(
                             array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
             ),
@@ -131,7 +131,7 @@ public class ProductController {
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "OK",
+                    description = "ProductDTO added",
                     content =
                     @Content(
                             array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
@@ -212,7 +212,7 @@ public class ProductController {
     @ApiResponses({
             @ApiResponse(
                     responseCode = "200",
-                    description = "OK",
+                    description = "Notification added",
                     content =
                     @Content(
                             array = @ArraySchema(schema = @Schema(implementation = ProductDTO.class)))
@@ -247,7 +247,7 @@ public class ProductController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "CommentDTO added",
+                    description = "Ok",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -301,7 +301,7 @@ public class ProductController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "CommentDTO added",
+                    description = "Ok",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -322,7 +322,7 @@ public class ProductController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "CommentDTO added",
+                    description = "Ok",
                     content = {
                             @Content(
                                     mediaType = "application/json",
@@ -342,7 +342,7 @@ public class ProductController {
     @ApiResponses(value = {
             @ApiResponse(
                     responseCode = "200",
-                    description = "CommentDTO added",
+                    description = "Ok",
                     content = {
                             @Content(
                                     mediaType = "application/json",
