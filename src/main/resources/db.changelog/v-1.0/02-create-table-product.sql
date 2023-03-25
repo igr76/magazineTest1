@@ -29,7 +29,7 @@ CREATE TABLE product_list_of_specificstions
 (
     product_id  bigint,
     index       bigint,
-    list_if_specificstions int
+    list_if_specificstions text
 );
 -- Вспомогательная таблица для списка оценок товара
 CREATE TABLE product_list_of_estimation

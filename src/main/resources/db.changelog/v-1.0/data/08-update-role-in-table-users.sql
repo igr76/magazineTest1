@@ -1,1 +1,0 @@
-UPDATE users SET role = 'USER' WHERE role IS NULL;

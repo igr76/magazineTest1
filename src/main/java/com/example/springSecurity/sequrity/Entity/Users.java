@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * Сущность пользователей
  */
+@Entity
 @Getter
 @Setter
 @ToString

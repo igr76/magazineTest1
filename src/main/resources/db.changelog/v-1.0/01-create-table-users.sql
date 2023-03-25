@@ -6,5 +6,5 @@ CREATE TABLE users
     password TEXT,
     balance int,
     roles TEXT,
-    organization TEXT,
+    organization TEXT
 );
