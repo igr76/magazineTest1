@@ -18,7 +18,6 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "users")
 public class Users {
-    SequrityServise sequrityServise;
     /**
      * id пользователя
      */
