@@ -40,7 +40,7 @@ public class OrganizationServiceImpl implements OrganizationService {
         log.info(FormLogInfo.getInfo());
         Organization organization1 = organizationRepository.findByName(organizationDTO.getName());
         if (organization1.getName() == organizationDTO.getName() || organizationDTO.isStatus()
-                || !sequrityServise.isAdmin(authentication)) { throw new AgentInitializationException();
+                || !sequrityServise.isAdmin(authentication)) { throw new AgentInitializationException("У вас нет прав доступа");
         }
         Organization organization = organizationRepository.save(organizationMapper.toEntity(organizationDTO));
         return organizationMapper.toDTO(organization);
