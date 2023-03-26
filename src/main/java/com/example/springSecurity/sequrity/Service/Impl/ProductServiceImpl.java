@@ -12,6 +12,7 @@ import com.example.springSecurity.sequrity.Entity.Product;
 import com.example.springSecurity.sequrity.Mapper.ProductMapper;
 import com.example.springSecurity.sequrity.exeption.SecurityAccessException;
 import com.example.springSecurity.sequrity.loger.FormLogInfo;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,9 @@ import java.util.Collection;
 import java.util.TimerTask;
 import java.util.stream.Collectors;
 /** * Сервис товаров */
+@AllArgsConstructor
 @Service
 @Slf4j
-@Transactional
 public class ProductServiceImpl implements com.example.springSecurity.sequrity.Service.ProductService {
     private ProductRepository productRepository;
     private ProductMapper productMapper;
@@ -43,6 +44,8 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
 
     private ProductHistoryRepository productHistoryRepository;
     private Product product;
+
+
     /**     Получить список товаров     */
     @Override
     public Collection<ProductDTO> getAllProduct(Categories categories) {
@@ -80,7 +83,7 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     }
     /**     * Добавляем товар     */
     @Override
-    public ProductDTO addProduct(ProductDTO productDTO, Authentication authentication) throws IOException {
+    public ProductDTO addProduct(ProductDTO productDTO, Authentication authentication)  {
         log.info(FormLogInfo.getInfo());
 
         if (productDTO == null || !sequrityServise.checkUserOrganization(authentication)) {
@@ -111,7 +114,7 @@ public class ProductServiceImpl implements com.example.springSecurity.sequrity.S
     }
     /**     * Добавляем уведомление     */
     @Override
-    public void addNotification(int id, NotificationDTO notificationDTO) throws IOException {
+    public void addNotification(int id, NotificationDTO notificationDTO) {
         log.info(FormLogInfo.getInfo());
         notificationRepository.save(notificationMapper.toEntity(notificationDTO));
          }

@@ -6,13 +6,17 @@ import com.example.springSecurity.sequrity.Entity.Users;
 import com.example.springSecurity.sequrity.Mapper.UserMapper;
 import com.example.springSecurity.sequrity.Repositories.UserRepository;
 import com.example.springSecurity.sequrity.Service.UserService;
+import com.example.springSecurity.sequrity.exeption.AgentInitializationException;
 import com.example.springSecurity.sequrity.exeption.ElemNotFound;
 import com.example.springSecurity.sequrity.loger.FormLogInfo;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.transaction.Transactional;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,8 +26,10 @@ import static java.nio.file.StandardOpenOption.CREATE_NEW;
 /**
  * Сервис пользователей
  */
+@AllArgsConstructor
 @Service
 @Slf4j
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private  UserRepository userRepository;
@@ -31,12 +37,6 @@ public class UserServiceImpl implements UserService {
     SequrityServise sequrityServise;
 //    @Value("${image.user.dir.path}")
 //    private String userPhotoDir;
-
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
-
 
     /**
      * Получить данные пользователя
@@ -53,14 +53,14 @@ public class UserServiceImpl implements UserService {
      * Обновить данные пользователя
      */
     @Override
-    public UserDTO updateUser(UserDTO newUserDto, Authentication authentication) {
+    public UserDTO updateUser(UserDTO newUserDto, Authentication authentication) throws AgentInitializationException {
         log.info(FormLogInfo.getInfo());
         String nameEmail = authentication.getName();
-        Users user = userRepository.findByEmail(nameEmail).orElseThrow(ElemNotFound::new);
+        Users user = findEntityByEmail(nameEmail);
         if (!sequrityServise.checkIsAdmin(authentication)) {
             if (!(nameEmail.equals(newUserDto.getEmail())||newUserDto.getBalance() == user.getBalance()
                     || newUserDto.getRole() == user.getRole()|| newUserDto.getOrganization() == user.getOrganization())) {
-                throw new RuntimeException();
+                throw new AgentInitializationException();
             }
         }
 
@@ -152,7 +152,7 @@ public class UserServiceImpl implements UserService {
      */
     private Users findEntityByEmail(String email) {
         log.info(FormLogInfo.getInfo());
-        return userRepository.findByEmail(email).get();
+        return userRepository.findByEmail(email).orElseThrow(ElemNotFound::new);
     }
 
 

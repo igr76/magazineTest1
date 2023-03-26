@@ -2,6 +2,7 @@ package com.example.springSecurity.sequrity.Service;
 
 import com.example.springSecurity.sequrity.DTO.NewPassword;
 import com.example.springSecurity.sequrity.DTO.UserDTO;
+import com.example.springSecurity.sequrity.exeption.AgentInitializationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.multipart.MultipartFile;
 /**
@@ -16,7 +17,7 @@ public interface UserService {
     /**
      * обновить пользователя
      */
-    UserDTO updateUser(UserDTO userDto, Authentication authentication) ;
+    UserDTO updateUser(UserDTO userDto, Authentication authentication) throws AgentInitializationException;
 
 
     /**

@@ -7,6 +7,7 @@ import com.example.springSecurity.sequrity.Repositories.DiscountRepository;
 import com.example.springSecurity.sequrity.Service.DiscountService;
 import com.example.springSecurity.sequrity.exeption.ElemNotFound;
 import com.example.springSecurity.sequrity.loger.FormLogInfo;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,18 +19,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /** * Сервис скидок */
+@AllArgsConstructor
 @Service
 @Slf4j
-@Transactional
 public class DiscountServiceImpl implements DiscountService {
 
     private DiscountMapper discountMapper;
     private  DiscountRepository discountRepository;
 
-    public DiscountServiceImpl(DiscountMapper discountMapper, DiscountRepository discountRepository) {
-        this.discountMapper = discountMapper;
-        this.discountRepository = discountRepository;
-    }
+
 
     /**     Получить список скидок     */
     @Override
@@ -39,7 +37,7 @@ public class DiscountServiceImpl implements DiscountService {
     }
     /** Добавить скидку     */
     @Override
-    public DiscountDTO addDiscoun( DiscountDTO discountDTO) throws IOException {
+    public DiscountDTO addDiscoun( DiscountDTO discountDTO)  {
         log.info(FormLogInfo.getInfo());
         Discount discount = discountRepository.save(discountMapper.toEntity(discountDTO));
         return discountMapper.toDTO(discount);
@@ -54,6 +52,7 @@ public class DiscountServiceImpl implements DiscountService {
     }
     /** Ежедневная проверка срока скидок */
     public void givenUsingTimer_whenSchedulingDailyTask_thenCorrect() {
+        log.info(FormLogInfo.getInfo());
         TimerTask repeatedTask = new TimerTask() {
             public void run() {
                 Collection<Discount> discounts = discountRepository.findAll();
