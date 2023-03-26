@@ -3,6 +3,7 @@ package com.example.springSecurity.sequrity.Controller;
 import com.example.springSecurity.sequrity.DTO.NewPassword;
 import com.example.springSecurity.sequrity.DTO.UserDTO;
 import com.example.springSecurity.sequrity.Service.UserService;
+import com.example.springSecurity.sequrity.exeption.AgentInitializationException;
 import com.example.springSecurity.sequrity.loger.FormLogInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -96,7 +97,7 @@ public class UserController {
     @PatchMapping(value = "/me")
     public ResponseEntity<UserDTO> updateUser(
             @RequestBody
-            @NotBlank(message = "updateUser не должен быть пустым") UserDTO userDto, Authentication authentication) {
+            @NotBlank(message = "updateUser не должен быть пустым") UserDTO userDto, Authentication authentication) throws AgentInitializationException {
         log.info(FormLogInfo.getInfo());
         return ResponseEntity.ok(userService.updateUser(userDto, authentication));
     }

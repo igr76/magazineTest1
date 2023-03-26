@@ -54,6 +54,7 @@ public class Product {
     /** Категория товара
      * @param categories  */
     @Column(name = "categories")
+    @Enumerated(EnumType.STRING)
     Categories categories;
     /** Отзывы на товар
      * @param reviews  */

@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
         if (!sequrityServise.checkIsAdmin(authentication)) {
             if (!(nameEmail.equals(newUserDto.getEmail())||newUserDto.getBalance() == user.getBalance()
                     || newUserDto.getRole() == user.getRole()|| newUserDto.getOrganization() == user.getOrganization())) {
-                throw new AgentInitializationException();
+                throw new AgentInitializationException("У вас нет прав доступа");
             }
         }
 

@@ -5,6 +5,7 @@ import com.example.springSecurity.sequrity.DTO.OrganizationDTO;
 import com.example.springSecurity.sequrity.DTO.ProductDTO;
 import com.example.springSecurity.sequrity.DTO.UserDTO;
 import com.example.springSecurity.sequrity.Service.OrganizationService;
+import com.example.springSecurity.sequrity.exeption.AgentInitializationException;
 import com.example.springSecurity.sequrity.loger.FormLogInfo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -77,7 +78,7 @@ public class OrganizationController {
             )
     })
     @PostMapping(value = "/product")
-    public ResponseEntity<OrganizationDTO> addOrganization( @RequestBody @Valid OrganizationDTO organizationDTO,Authentication authentication) throws IOException {
+    public ResponseEntity<OrganizationDTO> addOrganization( @RequestBody @Valid OrganizationDTO organizationDTO,Authentication authentication) throws IOException, AgentInitializationException {
         log.info(FormLogInfo.getInfo());
         return ResponseEntity.ok(organizationService.addOrganization(organizationDTO,authentication ));
     }
